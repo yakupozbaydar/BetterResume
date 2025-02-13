@@ -11,6 +11,16 @@ std::string getLineInput() {
     return input;
 }
 
+float getFloatInput() {
+    std::string input;
+    std::getline(std::cin, input);
+    try {
+        return std::stof(input);
+    } catch (const std::exception& e) {
+        return 0.0f;
+    }
+}
+
 // Helper function to clear input buffer
 void clearInputBuffer() {
     std::cin.clear();
@@ -63,7 +73,7 @@ int main() {
         edu.endDate = getLineInput();
         
         std::cout << "GPA (0 if not applicable): ";
-        std::cin >> std::fixed >> std::setprecision(2) >> edu.gpa;
+        edu.gpa = getFloatInput();
         clearInputBuffer();
 
         resume.addEducation(edu);
