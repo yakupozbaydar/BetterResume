@@ -1,3 +1,0 @@
-/Users/yakup/code/cpp/BetterResume/build/CMakeFiles/BetterResume.dir
-/Users/yakup/code/cpp/BetterResume/build/CMakeFiles/edit_cache.dir
-/Users/yakup/code/cpp/BetterResume/build/CMakeFiles/rebuild_cache.dir

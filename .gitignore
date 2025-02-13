@@ -60,3 +60,5 @@ Thumbs.db
 #ignore all files in the bin directory
 bin/
 
+
+build/
