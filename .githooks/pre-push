@@ -1,0 +1,40 @@
+#!/bin/bash
+
+echo "Running pre-push hook: Checking if project compiles..."
+
+# Save current state
+if [ -d "build" ]; then
+    mv build build_backup
+fi
+
+# Create build directory and try to compile
+mkdir -p build && cd build
+if ! cmake ..; then
+    echo "❌ CMake configuration failed"
+    cd ..
+    rm -rf build
+    if [ -d "build_backup" ]; then
+        mv build_backup build
+    fi
+    exit 1
+fi
+
+if ! make; then
+    echo "❌ Compilation failed"
+    cd ..
+    rm -rf build
+    if [ -d "build_backup" ]; then
+        mv build_backup build
+    fi
+    exit 1
+fi
+
+# Clean up
+cd ..
+rm -rf build
+if [ -d "build_backup" ]; then
+    mv build_backup build
+fi
+
+echo "✅ Project compiles successfully"
+exit 0 
